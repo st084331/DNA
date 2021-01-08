@@ -1,28 +1,35 @@
 import random
-X = ""
+
+def RAND():
+    r = random.randint(0, 100)
+    if r <= 25:
+        return 'A'
+    elif 25 < r <= 50:
+        return 'C'
+    elif 50 < r <= 75:
+        return 'T'
+    else:
+        return 'G'
+
+n = 100
+m = 100
+X = ''
 Y = ''
-n = random.randint(3,1000)
-m = random.randint(3,1000)
 for i in range(n):
-    r1 = random.randint(0, 100)
-    if r1 <= 25:
-        X += 'A'
-    elif 25 < r1 <= 50:
-        X += 'C'
-    elif 50 < r1 <= 75:
-        X += 'T'
-    else:
-        X += 'G'
+    X += RAND()
 for i in range(m):
-    r2 = random.randint(0, 100)
-    if r2 <= 25:
-        Y += 'A'
-    elif 25 < r2 <= 50:
-        Y += 'C'
-    elif 50 < r2 <= 75:
-        Y += 'T'
-    else:
-        Y += 'G'
+    Y += RAND()
+# Тест с малым изменением
+"""
+Y = X
+A = []
+for i in Y:
+    A.append(i)
+for i in range(5):
+    A[random.randint(0,m - 1)] = RAND()
+Y = ''.join(A)
+"""
+# Конец
 print('Вот наши последовательности')
 print(X)
 print(Y)
@@ -100,3 +107,8 @@ for i in range(len(New_X)):
         print('Ошибочка', i)
 print('Объединяем')
 print(result_str)
+#Тест для длинной последовательности
+"""
+if len(New_X) - len(X) <= 5:
+    print('Верное выравнивание')
+"""
